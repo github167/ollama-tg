@@ -10,7 +10,7 @@ export TG_BOT_TOKEN="tg bot token"
 export CHAT_ID="chat id"
 curl -X POST \
      -H 'Content-Type: application/json' \
-     -d '{"chat_id": "'"${CHAT_ID}"'"', "text": "This is a test from curl", "disable_notification": true}' \
+     -d '{"chat_id": "'"${CHAT_ID}"'", "text": "This is a test from curl", "disable_notification": true}' \
      https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage
 
 ```
