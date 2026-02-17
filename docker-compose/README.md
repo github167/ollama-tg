@@ -8,7 +8,9 @@ export MY_OLLAMA_MODEL=${HOME}/model
 
 2 pull Qwen2.5:0.5b if not pulled yet
 ```
-docker run --rm -v ${MY_OLLAMA_MODEL}:/root/.ollama -p 11434:11434 ollama/ollama ollama pull qwen2.5:0.5b
+docker run -d --rm -v ${MY_OLLAMA_MODEL}:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+docker exec -it ollama ollama pull qwen2.5:0.5b
+docker stop ollama
 
 ```
 2. clone the repo
