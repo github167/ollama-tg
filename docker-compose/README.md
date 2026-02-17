@@ -5,9 +5,11 @@ export CHAT_ID="chat id"
 export MY_OLLAMA_MODEL=${HOME}/model
 
 ```
+2. clone the repo
 ```
-git clone https://github.com/rikkichy/ollama-telegram
-cd ollama-telegram
+git clone https://github.com/github167/ollama-tg
+cd ollama-tg/docker-compose
+
 cat << EOF > .env
 TOKEN=${TG_BOT_TOKEN}
 ADMIN_IDS=${CHAT_ID}
@@ -20,26 +22,30 @@ LOG_LEVEL=DEBUG
 
 EOF
 
-```
-2. start ollama server
-```
-docker run -d --rm -v ${MY_OLLAMA_MODEL}:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
-#docker exec -it ollama ollama pull qwen2.5:0.5b
+cat << EOF > docker-compose.yml
+services:
+ ollama-tg:
+    build: .
+    container_name: ollama-tg
+    restart: on-failure
+    env_file:
+      - ./.env
+  ollama-api:
+    image: ollama/ollama:latest
+    container_name: ollama-server
+    volumes:
+      - ${MY_OLLAMA_MODEL}:/root/.ollama
+    restart: always
+    ports:
+      - '11434:11434'
 
 ```
-3. start ollama-tg docker image
+2. start all containers
 ```
-docker run -d --rm \
- --name ollama-tg \
- --add-host host.docker.internal:host-gateway \
- -e TOKEN=${TG_BOT_TOKEN} \
- -e ADMIN_IDS=${CHAT_ID} \
- -e USER_IDS=${CHAT_ID} \
- -e OLLAMA_BASE_URL=host.docker.internal \
- -e INITMODEL=qwen2.5:0.5b \
- rizkypsr/ollama-tg
+docker compose up
+#docker compose down
 
 ```
-4. type "/start" in your bot
+3. type "/start" in your bot
 
 
