@@ -10,6 +10,7 @@ export MY_OLLAMA_MODEL=${HOME}/model
 ```
 docker run -d --rm -v ${MY_OLLAMA_MODEL}:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 docker exec -it ollama ollama pull qwen2.5:0.5b
+docker exec -it ollama ollama list
 docker stop ollama
 
 ```
