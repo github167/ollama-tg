@@ -5,6 +5,12 @@ export CHAT_ID="chat id"
 export MY_OLLAMA_MODEL=${HOME}/model
 
 ```
+
+2 pull Qwen2.5:0.5b if not pulled yet
+```
+docker run --rm -v ${MY_OLLAMA_MODEL}:/root/.ollama -p 11434:11434 ollama/ollama ollama pull qwen2.5:0.5b
+
+```
 2. clone the repo
 ```
 git clone https://github.com/github167/ollama-tg
