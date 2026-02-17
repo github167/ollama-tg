@@ -39,6 +39,8 @@ services:
     ports:
       - '11434:11434'
 
+EOF
+
 ```
 2. start all containers
 ```
