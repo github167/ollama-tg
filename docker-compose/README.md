@@ -24,7 +24,7 @@ EOF
 
 cat << EOF > docker-compose.yml
 services:
- ollama-tg:
+  ollama-tg:
     build: .
     container_name: ollama-tg
     restart: on-failure
