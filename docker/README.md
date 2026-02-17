@@ -1,7 +1,7 @@
 1. init environment variables
 ```
-export TG_BOT_TOKEN=<tg bot token>
-export CHAT_ID=<chat id>
+export TG_BOT_TOKEN="tg bot token"
+export CHAT_ID="chat id"
 export MY_OLLAMA_MODEL=${HOME}/model
 
 ```
