@@ -14,6 +14,7 @@ docker run -d --rm -v ${MY_OLLAMA_MODEL}:/root/.ollama -p 11434:11434 --name oll
 3. start ollama-tg docker image
 ```
 docker run -d --rm \
+ --name ollama-tg \
  --add-host host.docker.internal:host-gateway \
  -e TOKEN=${TG_BOT_TOKEN} \
  -e ADMIN_IDS=${CHAT_ID} \
